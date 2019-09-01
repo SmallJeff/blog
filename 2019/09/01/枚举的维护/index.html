@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>枚举的维护 | 零零七</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="‌项目中，枚举通常表示一些状态，如订单状态，人员在职状态等。通常包含一个数字类型的值，和字符串类型的描述。如果是异常枚举，描述上会区分开发人员和最终用户。现在看来只有这些还不够。 HTTP协议状态码‌做WEB开发的小伙伴都知道HTTP协议的响应状态码。常见的有2xx，5xx，4xx几种。作为广泛使用的协议，其中还是有几个点值得借鉴。 集中管理‌我相信这种异常是集中的，不是分散的，大家也通常会使用枚">
+<meta property="og:type" content="article">
+<meta property="og:title" content="枚举的维护">
+<meta property="og:url" content="http://yoursite.com/2019/09/01/枚举的维护/index.html">
+<meta property="og:site_name" content="零零七">
+<meta property="og:description" content="‌项目中，枚举通常表示一些状态，如订单状态，人员在职状态等。通常包含一个数字类型的值，和字符串类型的描述。如果是异常枚举，描述上会区分开发人员和最终用户。现在看来只有这些还不够。 HTTP协议状态码‌做WEB开发的小伙伴都知道HTTP协议的响应状态码。常见的有2xx，5xx，4xx几种。作为广泛使用的协议，其中还是有几个点值得借鉴。 集中管理‌我相信这种异常是集中的，不是分散的，大家也通常会使用枚">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-01T12:52:33.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="枚举的维护">
+<meta name="twitter:description" content="‌项目中，枚举通常表示一些状态，如订单状态，人员在职状态等。通常包含一个数字类型的值，和字符串类型的描述。如果是异常枚举，描述上会区分开发人员和最终用户。现在看来只有这些还不够。 HTTP协议状态码‌做WEB开发的小伙伴都知道HTTP协议的响应状态码。常见的有2xx，5xx，4xx几种。作为广泛使用的协议，其中还是有几个点值得借鉴。 集中管理‌我相信这种异常是集中的，不是分散的，大家也通常会使用枚">
+  
+    <link rel="alternate" href="/atom.xml" title="零零七" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">零零七</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">个人博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-枚举的维护" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/01/枚举的维护/" class="article-date">
+  <time datetime="2019-09-01T12:39:22.000Z" itemprop="datePublished">2019-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      枚举的维护
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>‌项目中，枚举通常表示一些状态，如订单状态，人员在职状态等。通常包含一个数字类型的值，和字符串类型的描述。如果是异常枚举，描述上会区分开发人员和最终用户。现在看来只有这些还不够。</p>
+<h2 id="HTTP协议状态码"><a href="#HTTP协议状态码" class="headerlink" title="HTTP协议状态码"></a>HTTP协议状态码</h2><p>‌做WEB开发的小伙伴都知道HTTP协议的响应状态码。常见的有2xx，5xx，4xx几种。作为广泛使用的协议，其中还是有几个点值得借鉴。</p>
+<h3 id="集中管理"><a href="#集中管理" class="headerlink" title="集中管理"></a>集中管理</h3><p>‌我相信这种异常是集中的，不是分散的，大家也通常会使用枚举来应对。自己开发的应用中，常见的是一些由于参数原因导致的异常是否是枚举化的，因为使用枚举表示后，所有异常是集中的，我们可以回答应用会抛出多少种异常，都在什么场景下，抛出的问题。我经常看代码中沙子版散落的异常，回答前面的问题就很困难。</p>
+<h3 id="场景分类"><a href="#场景分类" class="headerlink" title="场景分类"></a>场景分类</h3><p>‌HTTP协议的状态码是有分类的。2开头的表示成功，4开头的表示权限相关，5开头的表示服务端异常相关。在应用开发中，核心业务流程通常是有阶段性的。比如订单的生命周期有下单，支付，发货，售后4个阶段。但每个阶段内又有一些具体的动作导致状态迁移。如果按照12345这种递增的方式，给定状态码，很难一眼看出是哪个阶段的。</p>
+<h3 id="离散非连续"><a href="#离散非连续" class="headerlink" title="离散非连续"></a>离散非连续</h3><p>‌HTTP状态码是有空隙的。此处的空隙是指使用三位状态码，第一位标识大类，后面还有两位，至多表示99种异常，但实际并没有用完。你可能会说，只要超过9种异常就需要2位数。但我要强调的是，其中保留了扩展的空间。如果你的应用目前只有6种，你会用几位来表示呢？</p>
+<h3 id="穷尽场景"><a href="#穷尽场景" class="headerlink" title="穷尽场景"></a>穷尽场景</h3><p>‌在每类状态下，都尽可能地穷举出了重要的错误。如果对底层协议熟悉的小伙伴，一看便知问题所在。一方面说明，协议成熟其中可能的问题已经是了可穷举的了。另一方面，也说明 做应用开发的我们，达不到大神的精细，但是在自己的业务领域至少应该搞清楚那些关键异常。</p>
+<h2 id="再看业务"><a href="#再看业务" class="headerlink" title="再看业务"></a>再看业务</h2><h3 id="枚举值分组"><a href="#枚举值分组" class="headerlink" title="枚举值分组"></a>枚举值分组</h3><p>‌枚举值的使用。枚举通常是一个一个的，如果需要其中的一类值，你要怎么定义呢？按照使用场景，临时自定义集合对象？在枚举类内部定义常量集合？在在回答之前，我们先分析下。首先，一类枚举值，其实是一部分枚举值，本质是对枚举值语义的解读。这种解读站在面向对象的角度，站在代码维护的角度，在枚举类内部维护是最优的。对枚举值的解读冲突很容易在比较中发现。接下来讨论下内部如何表示的问题。如下代码有没有问题？有什么问题？</p>
+<p>我认为有三个问题，一，这个list的内容是可修改的 2. 想必你也遇到过这样的场景，当前的枚举值是否是类之一，使用list无论哪种查找效率都不高。最后，直接暴露内部属性意味着外部程序在定义枚举的意义。参考接口的定义，只有方法，没有属性，所以应该使用者基于方法来确定语义。<br>‌更合理的方案是什么？</p>
+<h3 id="旧值新义"><a href="#旧值新义" class="headerlink" title="旧值新义"></a>旧值新义</h3><p>‌具体实现时，不一定要增加枚举值，也有可能部分枚举值的语义有扩展。最终的实现是工具方法，还是在需要这种场景的时候直接加一段代码？其实，枚举不仅定义了值，也定义了其语义，所以语义也是维护在枚举内部的。因此，扩展时建议通过定义新的静态方法来实现，避免同一语义多处实现，这就是代码中的坏味道。这点有些啰嗦，因为枚举的结构和功能太简单，随手就修改了，很容易被忽略。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>‌最后，做到了上述几点，我想你的枚举类是可维护的。希望作为码农的我们都能少挖坑，早下班。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/01/枚举的维护/" data-id="ck00z6gf7000198v1t6fxrrz7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/01/枚举的维护/">枚举的维护</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/01/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
